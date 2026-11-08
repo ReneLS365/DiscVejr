@@ -1,42 +1,45 @@
-# DiscVejr Android-widget v1.0.0
+# DiscVejr 2.0 – vejr og vind til discgolf
 
-Native Android-app og startskærmswidget på dansk, Android 8.0+ (API 26+), med Kvaglund i Esbjerg som standard.
+Native Android-app og startskærmswidget på dansk. Kvaglund i Esbjerg er standardområde.
+**Status:** v2-udviklingsversion, test på fysisk Android-telefon før almindelig brug.
 
-## Funktioner
+## Kastkompas
 
-- Widget på 4 × 3 felter, der kan ændres i størrelse
-- Open-Meteo vejrdata: temperatur, føles-som, vind, retning, vindstød, regnrisiko i de næste 3 timer og solnedgang
-- Discgolf-score 0–100 baseret på vejrforhold, ikke på golfvejr-indekser
-- Råd om glow og tordenvejr
-- Opdatering manuelt og omtrent hver halve time, når Android tillader det
-- Valgfri omtrentlige lokation, ingen konto eller tracking
-- Lokal cache med markering, når vejret er over 2 timer gammelt
+- Nord vender altid opad. Gul pil viser **hvor vinden kommer fra** (peger ind mod midten). Grøn pil viser **hvor discen kastes hen** (peger ud fra midten).
+- Indstil kastretningen 0–359° med skyderen eller drej ±45°. Kastretningen gemmes også til widgetten.
+- Modvind (+) og medvind (−) beregnes ud fra vindens retning og kastets retning, med sidevind fra højre (+) eller venstre (−). Komponenterne er vejledende, baseret på modelvind ved 10 m.
+- Eksempel: kast mod Ø (90°) med vind FRA N (0°) giver sidevind fra venstre. Kast mod Ø med vind FRA Ø giver modvind.
 
-## Bygning og installation
+## Vejrdata i appen
 
-Projektet er del af [ReneLS365/DiscVejr](https://github.com/ReneLS365/DiscVejr), og GitHub Actions bygger automatisk en debug-signeret APK ved kodeændringer på `main`.
+- Temperatur, oplevet temperatur, vind, vindstød, vindretning
+- Regnrisiko og forventet nedbørsmængde næste 3 timer samt timevis vind og vindstød
+- Relativ luftfugtighed, dugpunkt, skydække, sigtbarhed
+- Overfladetryk, **estimeret** fugtig lufttæthed (kg/m³), UV-indeks
+- Dagslys, solopgang, solnedgang
+- Vejledende score 0–100 for drive, approach, putting og samlet forhold
+- Grebsadvarsler ved fugt, nedbør og kulde samt særskilt stopråd ved torden
 
-1. [Åbn GitHub Actions](https://github.com/ReneLS365/DiscVejr/actions/workflows/android-apk.yml) og vælg en grøn bygning.
-2. Download `DiscVejr-Android-APK`, pak ZIP ud og installer `app-debug.apk`.
-3. Åbn appen og tryk **Opdater vejret nu**.
-4. Hold på Android-startskærmen → **Widgets** → **DiscVejr**.
+Data: [Open-Meteo](https://open-meteo.com/en/docs), prognoser med modelusikkerhed, ikke lokale målinger ved tee. Vejr ved skov, bygninger og på banen kan afvige markant. Kastanalysen er ikke en discflysimulator og tager ikke mold, vægt, spin eller release-vinkel med. Slå ikke op efter vejr i stedet for at følge varsler om torden.
 
-Du kan også åbne mappen i Android Studio (JDK 17) og bygge en APK.
+## Installer APK fra GitHub Actions
+
+1. Åbn [GitHub Actions – Byg DiscVejr APK](https://github.com/ReneLS365/DiscVejr/actions/workflows/android-apk.yml).
+2. Vælg en **grøn** kørsel på den ønskede branch/commit.
+3. Download artifact `DiscVejr-Android-APK`, udpak ZIP og find `app-debug.apk`.
+4. Installer med Android-pakkeinstallationen eller Termux ADB:
+   `adb install -r "/sti/til/app-debug.apk"`.
+5. Hvis debug-signaturen er anderledes: `adb uninstall dk.discvejr.widget` og installér igen. Det sletter lokale appdata.
+6. Åbn DiscVejr, opdater vejr og tilføj widgetten fra Android-startskærmens widget-menu.
 
 ## Teknisk
 
-- Java, Android App Widget (RemoteViews), JobScheduler og HTTPS
-- `minSdk=26`, `targetSdk=35`, Android Gradle Plugin 8.7.3, Gradle 8.9, Java 17
-- Omtrentlige standardkoordinater for Kvaglund: 55.49202, 8.49351
-- Lokationsadgang bliver først forespurgt, når brugeren vælger egen position
-- Vejret er en prognose, ikke en lokal målestation; score er ingen sikkerhedsgaranti
+- Java 17, native Android, `minSdk=26`, `targetSdk=35`
+- Open-Meteo forecast API og lokale SharedPreferences til cache og kastretning
+- Android AppWidgetProvider / RemoteViews, JobScheduler for periodisk eller manuel opdatering
+- Ingen profiler, annoncer eller tracking-SDK
+- Ikke kommerciel brug: undersøg Open-Meteos gældende licensvilkår inden distribution
 
-Test fra denne mappe:
+## Tests
 
-```sh
-mkdir -p /tmp/discvejr-tests
-javac -d /tmp/discvejr-tests app/src/main/java/dk/discvejr/widget/WeatherLogic.java tests/WeatherLogicTest.java
-java -cp /tmp/discvejr-tests dk.discvejr.widget.WeatherLogicTest
-```
-
-Vejrdata: [Open-Meteo](https://open-meteo.com/). Ved kommerciel distribution skal deres aktuelle licensvilkår kontrolleres.
+GitHub Actions kompilerer og tester Java-vindberegninger før Android-APK bygges. Selve APK'en skal derudover afprøves på fysisk Samsung/Android: installation, netværk, widget, rotationskontrol, offline cache og baggrundsopdatering.
