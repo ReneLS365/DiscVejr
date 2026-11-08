@@ -172,7 +172,7 @@
         </LinearLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
             android:layout_marginTop="24dp" android:layout_marginBottom="10dp"
-            android:text="04  /  POSITION & OPDATERING" android:textColor="#B2F26A"
+            android:text="04  /  POSITION &amp; OPDATERING" android:textColor="#B2F26A"
             android:textStyle="bold" android:textSize="13sp"/>
         <Button android:id="@+id/kvaglund_button" android:layout_width="match_parent"
             android:layout_height="wrap_content" android:text="Kvaglund, Esbjerg"
