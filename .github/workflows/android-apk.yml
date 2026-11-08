@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/android-apk.yml'
       - 'discvejr_android/**'
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -41,7 +43,7 @@ jobs:
         shell: bash
         run: |
           mkdir -p /tmp/discvejr-tests
-          javac -d /tmp/discvejr-tests discvejr_android/app/src/main/java/dk/discvejr/widget/WeatherLogic.java discvejr_android/tests/WeatherLogicTest.java
+          javac -cp "$ANDROID_HOME/platforms/android-35/android.jar" -d /tmp/discvejr-tests discvejr_android/app/src/main/java/dk/discvejr/widget/WindAnalysis.java discvejr_android/app/src/main/java/dk/discvejr/widget/WeatherData.java discvejr_android/app/src/main/java/dk/discvejr/widget/WeatherLogic.java discvejr_android/tests/WeatherLogicTest.java
           java -cp /tmp/discvejr-tests dk.discvejr.widget.WeatherLogicTest
 
       - name: Byg APK
