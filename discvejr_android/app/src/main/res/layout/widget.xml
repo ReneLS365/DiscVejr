@@ -1,66 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/widget_root"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_widget"
-    android:padding="13dp"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@drawable/bg_widget" android:padding="12dp"
     android:orientation="vertical">
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="24dp" android:orientation="horizontal" android:gravity="center_vertical">
-        <TextView android:id="@+id/brand" android:layout_width="0dp" android:layout_height="wrap_content"
-            android:layout_weight="1" android:text="◉  DISCVEJR" android:textColor="#B2F26A" android:textStyle="bold" android:textSize="12sp" android:letterSpacing="0.09" />
-        <TextView android:id="@+id/location" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="KVAGLUND" android:textColor="#C6D1C8" android:textSize="10sp" android:singleLine="true"/>
-        <TextView android:id="@+id/refresh" android:layout_width="33dp" android:layout_height="match_parent"
-            android:text="↻" android:gravity="center" android:textColor="#B2F26A" android:textSize="23sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="25dp"
+        android:orientation="horizontal" android:gravity="center_vertical">
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:text="◉  DISCVEJR" android:textColor="#B2F26A"
+            android:textStyle="bold" android:textSize="12sp" android:letterSpacing="0.08"/>
+        <TextView android:id="@+id/location" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="KVAGLUND"
+            android:textColor="#D0DDD3" android:textSize="10sp" android:maxLines="1"/>
+        <TextView android:id="@+id/refresh" android:layout_width="32dp"
+            android:layout_height="match_parent" android:gravity="center"
+            android:text="↻" android:textColor="#B2F26A" android:textSize="22sp"
+            android:contentDescription="Opdater vejr"/>
     </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:gravity="center_vertical" android:orientation="horizontal">
-        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-            <TextView android:id="@+id/rating" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="INDLÆSER VEJRET" android:textColor="#B2F26A" android:textStyle="bold" android:textSize="17sp" android:maxLines="1" android:autoSizeTextType="uniform" android:autoSizeMinTextSize="10sp" android:autoSizeMaxTextSize="17sp" />
-            <TextView android:id="@+id/tip" android:layout_width="match_parent" android:layout_height="wrap_content"
-                android:text="Vurdering til discgolf" android:textColor="#C6D1C8" android:textSize="10sp" android:maxLines="2" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="0dp"
+        android:layout_weight="1" android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+            android:layout_weight="1" android:orientation="vertical">
+            <TextView android:id="@+id/rating" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="HENTER VEJRET"
+                android:textColor="#B2F26A" android:textStyle="bold" android:textSize="17sp"
+                android:maxLines="1" android:autoSizeTextType="uniform"
+                android:autoSizeMinTextSize="10sp" android:autoSizeMaxTextSize="17sp"/>
+            <TextView android:id="@+id/tip" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Vent på prognose"
+                android:textColor="#B5C9BB" android:textSize="10sp" android:maxLines="2"/>
+            <TextView android:id="@+id/temp" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="--°"
+                android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="32sp"/>
+            <TextView android:id="@+id/feels" android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:text="Føles som --°"
+                android:textColor="#ADC0B0" android:textSize="10sp"/>
         </LinearLayout>
-        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end">
-            <TextView android:id="@+id/temp" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="--°" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="35sp" />
-            <TextView android:id="@+id/feels" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Føles som --°" android:textColor="#ACBBB1" android:textSize="10sp" />
+        <ImageView android:id="@+id/wind_compass" android:layout_width="103dp"
+            android:layout_height="103dp" android:scaleType="fitCenter"
+            android:contentDescription="Vindkompas og kastretning"/>
+    </LinearLayout>
+    <TextView android:id="@+id/wind_direction" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Vindretning afventer"
+        android:textColor="#F8C673" android:textSize="11sp" android:maxLines="1"
+        android:gravity="center"/>
+    <TextView android:id="@+id/throw_summary" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:text="Vælg kastretning i appen"
+        android:textColor="#D8E7DA" android:textSize="10sp" android:maxLines="1"
+        android:gravity="center" android:layout_marginBottom="6dp"/>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="52dp"
+        android:orientation="horizontal">
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="match_parent" android:background="@drawable/bg_metric"
+            android:padding="6dp" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="VIND" android:textColor="#ACBEB2" android:textSize="9sp"/>
+            <TextView android:id="@+id/wind" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="-- km/t"
+                android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="13sp"
+                android:singleLine="true"/>
+        </LinearLayout>
+        <TextView android:layout_width="5dp" android:layout_height="1dp"/>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="match_parent" android:background="@drawable/bg_metric"
+            android:padding="6dp" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="VINDSTØD" android:textColor="#ACBEB2" android:textSize="9sp"/>
+            <TextView android:id="@+id/gust" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="-- km/t"
+                android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="13sp"
+                android:singleLine="true"/>
+        </LinearLayout>
+        <TextView android:layout_width="5dp" android:layout_height="1dp"/>
+        <LinearLayout android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="match_parent" android:background="@drawable/bg_metric"
+            android:padding="6dp" android:orientation="vertical">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="REGN 3 TIMER" android:textColor="#ACBEB2" android:textSize="9sp"
+                android:singleLine="true"/>
+            <TextView android:id="@+id/rain" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="-- %"
+                android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="13sp"
+                android:singleLine="true"/>
         </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="53dp" android:orientation="horizontal">
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/bg_metric" android:orientation="vertical" android:padding="7dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VIND" android:textColor="#9DB2A5" android:textSize="9sp" />
-            <TextView android:id="@+id/wind" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="-- km/t" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:singleLine="true" />
-        </LinearLayout>
-        <TextView android:layout_width="5dp" android:layout_height="1dp" />
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/bg_metric" android:orientation="vertical" android:padding="7dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VINDSTØD" android:textColor="#9DB2A5" android:textSize="9sp" />
-            <TextView android:id="@+id/gust" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="-- km/t" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:singleLine="true" />
-        </LinearLayout>
-        <TextView android:layout_width="5dp" android:layout_height="1dp" />
-        <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/bg_metric" android:orientation="vertical" android:padding="7dp">
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="REGN · 3 TIMER" android:textColor="#9DB2A5" android:textSize="9sp" android:singleLine="true" />
-            <TextView android:id="@+id/rain" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="-- %" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:singleLine="true" />
-        </LinearLayout>
+    <LinearLayout android:layout_width="match_parent" android:layout_height="28dp"
+        android:gravity="center_vertical" android:orientation="horizontal">
+        <TextView android:id="@+id/h1" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:gravity="center" android:text="NU · --%"
+            android:textColor="#DCE7DF" android:textSize="10sp"/>
+        <TextView android:id="@+id/h2" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:gravity="center" android:text="+1t · --%"
+            android:textColor="#DCE7DF" android:textSize="10sp"/>
+        <TextView android:id="@+id/h3" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:gravity="center" android:text="+2t · --%"
+            android:textColor="#DCE7DF" android:textSize="10sp"/>
     </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="43dp" android:orientation="horizontal" android:gravity="center_vertical">
-        <TextView android:id="@+id/h1" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-            android:gravity="center" android:text="NU · --%" android:textColor="#DCE7DF" android:textSize="11sp" />
-        <TextView android:id="@+id/h2" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-            android:gravity="center" android:text="+1t · --%" android:textColor="#DCE7DF" android:textSize="11sp" />
-        <TextView android:id="@+id/h3" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
-            android:gravity="center" android:text="+2t · --%" android:textColor="#DCE7DF" android:textSize="11sp" />
-    </LinearLayout>
-
-    <LinearLayout android:layout_width="match_parent" android:layout_height="20dp" android:orientation="horizontal" android:gravity="center_vertical">
-        <TextView android:id="@+id/sunset" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Solnedgang --:--"
-            android:textColor="#C6D1C8" android:textSize="10sp" />
-        <TextView android:id="@+id/updated" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Venter på data"
-            android:textColor="#8FA196" android:textSize="9sp" />
+    <LinearLayout android:layout_width="match_parent" android:layout_height="20dp"
+        android:orientation="horizontal">
+        <TextView android:id="@+id/sunset" android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Solnedgang --:--"
+            android:textColor="#C6D1C8" android:textSize="10sp"/>
+        <TextView android:id="@+id/updated" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:text="Venter på data"
+            android:textColor="#8FA196" android:textSize="9sp"/>
     </LinearLayout>
 </LinearLayout>
