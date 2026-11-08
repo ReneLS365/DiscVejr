@@ -36,12 +36,12 @@
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VIND" android:textColor="#9DB2A5" android:textSize="9sp" />
             <TextView android:id="@+id/wind" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="-- km/t" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:singleLine="true" />
         </LinearLayout>
-        <Space android:layout_width="5dp" android:layout_height="1dp" />
+        <TextView android:layout_width="5dp" android:layout_height="1dp" />
         <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/bg_metric" android:orientation="vertical" android:padding="7dp">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="VINDSTØD" android:textColor="#9DB2A5" android:textSize="9sp" />
             <TextView android:id="@+id/gust" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="-- km/t" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:singleLine="true" />
         </LinearLayout>
-        <Space android:layout_width="5dp" android:layout_height="1dp" />
+        <TextView android:layout_width="5dp" android:layout_height="1dp" />
         <LinearLayout android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@drawable/bg_metric" android:orientation="vertical" android:padding="7dp">
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="REGN · 3 TIMER" android:textColor="#9DB2A5" android:textSize="9sp" android:singleLine="true" />
             <TextView android:id="@+id/rain" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="-- %" android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="14sp" android:singleLine="true" />
