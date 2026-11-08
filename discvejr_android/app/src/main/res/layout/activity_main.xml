@@ -3,45 +3,192 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="#101714" android:fillViewport="true">
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:orientation="vertical" android:padding="24dp">
+        android:orientation="vertical" android:padding="20dp">
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:text="◉  DISCVEJR" android:textColor="#B2F26A"
-            android:textStyle="bold" android:textSize="17sp" android:letterSpacing="0.11" />
+            android:text="◉  DISCVEJR  /  2.0" android:textColor="#B2F26A"
+            android:textSize="13sp" android:textStyle="bold" android:letterSpacing="0.12"/>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="12dp" android:text="Vejr til discgolf"
-            android:textColor="#FFFFFF" android:textStyle="bold" android:textSize="30sp" />
+            android:layout_marginTop="10dp" android:text="Vejret. Kastet. Kontrollen."
+            android:textColor="#FFFFFF" android:textSize="27sp" android:textStyle="bold"/>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="Vind og vindstød betyder mere end en traditionel golfvurdering. Widgetten viser de vigtigste oplysninger direkte på startskærmen."
-            android:textColor="#B5C5B9" android:textSize="14sp" />
-        <TextView android:id="@+id/summary" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="28dp" android:background="@drawable/bg_widget" android:padding="20dp"
-            android:text="Indlæser vejr…" android:textColor="#FFFFFF" android:textSize="16sp" android:lineSpacingExtra="6dp" />
+            android:layout_marginTop="5dp" android:text="Vind fra og vind imod dit kast, uden gæt om hulretning."
+            android:textColor="#AABFB2" android:textSize="13sp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="20dp" android:orientation="vertical"
+            android:background="@drawable/bg_widget" android:padding="18dp">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:id="@+id/current_place" android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:layout_weight="1"
+                    android:text="Kvaglund, Esbjerg" android:textColor="#D9E8DF" android:textSize="13sp"/>
+                <TextView android:id="@+id/updated_at" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="Afventer data"
+                    android:textColor="#8EA89A" android:textSize="11sp"/>
+            </LinearLayout>
+            <TextView android:id="@+id/hero_status" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="18dp"
+                android:text="HENTER VEJRET" android:textColor="#B2F26A"
+                android:textStyle="bold" android:textSize="24sp"/>
+            <TextView android:id="@+id/hero_index" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="2dp"
+                android:text="-- / 100" android:textColor="#FFFFFF"
+                android:textSize="44sp" android:textStyle="bold"/>
+            <TextView android:id="@+id/hero_sub" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Venter på vejrdata"
+                android:textColor="#B6C7BC" android:textSize="13sp" android:lineSpacingExtra="3dp"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="16dp" android:orientation="horizontal">
+                <TextView android:id="@+id/drive_score" android:layout_width="0dp"
+                    android:layout_weight="1" android:layout_height="wrap_content"
+                    android:padding="8dp" android:gravity="center" android:background="@drawable/bg_metric"
+                    android:text="DRIVE\n-- /100" android:textColor="#FFFFFF"
+                    android:textSize="12sp" android:lineSpacingExtra="4dp"/>
+                <TextView android:layout_width="6dp" android:layout_height="1dp"/>
+                <TextView android:id="@+id/approach_score" android:layout_width="0dp"
+                    android:layout_weight="1" android:layout_height="wrap_content"
+                    android:padding="8dp" android:gravity="center" android:background="@drawable/bg_metric"
+                    android:text="APPROACH\n-- /100" android:textColor="#FFFFFF"
+                    android:textSize="12sp" android:lineSpacingExtra="4dp"/>
+                <TextView android:layout_width="6dp" android:layout_height="1dp"/>
+                <TextView android:id="@+id/putting_score" android:layout_width="0dp"
+                    android:layout_weight="1" android:layout_height="wrap_content"
+                    android:padding="8dp" android:gravity="center" android:background="@drawable/bg_metric"
+                    android:text="PUTTING\n-- /100" android:textColor="#FFFFFF"
+                    android:textSize="12sp" android:lineSpacingExtra="4dp"/>
+            </LinearLayout>
+        </LinearLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="26dp" android:text="VEJROMRÅDE"
-            android:textColor="#B2F26A" android:textStyle="bold" android:textSize="12sp" />
-        <TextView android:id="@+id/current_place" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="7dp" android:text="Kvaglund, Esbjerg"
-            android:textColor="#FFFFFF" android:textSize="18sp" />
-        <Button android:id="@+id/kvaglund_button" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="14dp" android:text="Vælg Kvaglund (standard)" android:textAllCaps="false"
-            android:backgroundTint="#31472F" android:textColor="#FFFFFF" />
-        <Button android:id="@+id/location_button" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="6dp" android:text="Brug min position" android:textAllCaps="false"
-            android:backgroundTint="#31472F" android:textColor="#FFFFFF" />
-        <Button android:id="@+id/refresh_button" android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" android:text="Opdater vejret nu" android:textAllCaps="false"
-            android:backgroundTint="#B2F26A" android:textColor="#142017" />
+            android:layout_marginTop="24dp" android:layout_marginBottom="10dp"
+            android:text="01  /  KASTKOMPAS" android:textColor="#B2F26A"
+            android:textStyle="bold" android:textSize="13sp" android:letterSpacing="0.08"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_widget"
+            android:padding="15dp">
+            <dk.discvejr.widget.WindCompassView
+                android:id="@+id/compass" android:layout_width="match_parent"
+                android:layout_height="250dp" android:contentDescription="Kompas med vind fra og kast mod"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="●  GUL = VIND FRA     ●  GRØN = KAST MOD"
+                android:gravity="center" android:textColor="#D1DDD4" android:textSize="11sp"/>
+            <TextView android:id="@+id/wind_source" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="16dp"
+                android:text="Vindretning afventer" android:textColor="#F8C673"
+                android:textSize="15sp" android:gravity="center"/>
+            <TextView android:id="@+id/bearing_label" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="16dp"
+                android:text="KAST MOD N  /  0°" android:textColor="#B2F26A"
+                android:textStyle="bold" android:textSize="17sp"/>
+            <SeekBar android:id="@+id/throw_seek" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:max="359"
+                android:progressTint="#B2F26A" android:thumbTint="#B2F26A"
+                android:progressBackgroundTint="#34473C"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button android:id="@+id/bearing_left" android:layout_width="0dp"
+                    android:layout_weight="1" android:layout_height="48dp"
+                    android:text="↶  −45°" android:textAllCaps="false"
+                    android:backgroundTint="#32483A" android:textColor="#FFFFFF"/>
+                <TextView android:layout_width="8dp" android:layout_height="1dp"/>
+                <Button android:id="@+id/bearing_right" android:layout_width="0dp"
+                    android:layout_weight="1" android:layout_height="48dp"
+                    android:text="+45°  ↷" android:textAllCaps="false"
+                    android:backgroundTint="#32483A" android:textColor="#FFFFFF"/>
+            </LinearLayout>
+            <TextView android:id="@+id/relative_wind" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="14dp"
+                android:text="Venter på vindanalyse" android:textColor="#FFFFFF"
+                android:textStyle="bold" android:textSize="20sp"/>
+            <TextView android:id="@+id/wind_components" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="6dp"
+                android:text="Mod-/medvind og sidevind vises her"
+                android:textColor="#DCE5DF" android:textSize="13sp"/>
+            <TextView android:id="@+id/throw_tip" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="11dp"
+                android:text="Juster retningen efter den vej, discen kastes."
+                android:textColor="#B8CCBE" android:textSize="13sp" android:lineSpacingExtra="4dp"/>
+        </LinearLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="28dp" android:text="SÅDAN TILFØJES WIDGETTEN"
-            android:textColor="#B2F26A" android:textStyle="bold" android:textSize="12sp" />
+            android:layout_marginTop="24dp" android:layout_marginBottom="10dp"
+            android:text="02  /  FORHOLD DER PÅVIRKER KASTET" android:textColor="#B2F26A"
+            android:textStyle="bold" android:textSize="13sp" android:letterSpacing="0.05"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_widget"
+            android:padding="16dp">
+            <TextView android:id="@+id/data_wind" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Vind: --" android:textColor="#FFFFFF"
+                android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_gust" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Vindstød: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_temperature" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Temperatur: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_rain" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Regnrisiko: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_humidity" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Luftfugtighed: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_dew" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Dugpunkt: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_cloud" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Skydække: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_visibility" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Sigtbarhed: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_pressure" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Lufttryk ved jord: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_density" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Lufttæthed, estimat: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_uv" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="UV-indeks: --"
+                android:textColor="#FFFFFF" android:textSize="15sp" android:paddingBottom="11dp"/>
+            <TextView android:id="@+id/data_sun" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Dagslys: --"
+                android:textColor="#FFFFFF" android:textSize="15sp"/>
+        </LinearLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
-            android:text="1. Hold fingeren på et tomt område af startskærmen.\n2. Tryk Widgets.\n3. Find DiscVejr.\n4. Træk widgetten til startskærmen (4 × 3 felter).\n5. Tryk ↻ på widgetten for manuel opdatering."
-            android:textColor="#D6E4DA" android:textSize="14sp" android:lineSpacingExtra="6dp" />
+            android:layout_marginTop="24dp" android:layout_marginBottom="10dp"
+            android:text="03  /  GREB OG NÆSTE TIMER" android:textColor="#B2F26A"
+            android:textStyle="bold" android:textSize="13sp"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:orientation="vertical" android:background="@drawable/bg_widget"
+            android:padding="16dp">
+            <TextView android:id="@+id/grip_warning" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:text="Greb: afventer prognose"
+                android:textColor="#F8C673" android:textSize="14sp" android:lineSpacingExtra="3dp"/>
+            <TextView android:id="@+id/hourly_forecast" android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:layout_marginTop="13dp"
+                android:text="Timeprognose indlæses" android:textColor="#E1EAE2"
+                android:textSize="14sp" android:lineSpacingExtra="7dp"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Lufttæthed er et fysisk estimat ud fra tryk, temperatur og fugt. Discens konkrete flugt afhænger også af mold, plast, spin, hastighed, næsevinkel og udløsningsvinkel. Kompasset viser prognosevind ved 10 m, ikke vindmåling på tee."
+                android:textColor="#98AFA1" android:textSize="12sp" android:lineSpacingExtra="3dp"/>
+        </LinearLayout>
         <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Vejrdata: Open-Meteo.com. Opdateres ca. hvert 30. minut, afhængigt af Androids batteristyring. Scoren 0-100 er en uofficiel, discgolf-specifik vurdering og erstatter ikke egne observationer eller varsler. Ingen reklamer, ingen brugerprofil og ingen sporing."
-            android:textColor="#8FA196" android:textSize="12sp" android:lineSpacingExtra="4dp" />
+            android:layout_marginTop="24dp" android:layout_marginBottom="10dp"
+            android:text="04  /  POSITION & OPDATERING" android:textColor="#B2F26A"
+            android:textStyle="bold" android:textSize="13sp"/>
+        <Button android:id="@+id/kvaglund_button" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Kvaglund, Esbjerg"
+            android:textAllCaps="false" android:backgroundTint="#31472F"
+            android:textColor="#FFFFFF"/>
+        <Button android:id="@+id/location_button" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Brug telefonens position"
+            android:textAllCaps="false" android:backgroundTint="#31472F"
+            android:textColor="#FFFFFF"/>
+        <Button android:id="@+id/refresh_button" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            android:text="Opdater vejret nu" android:textAllCaps="false"
+            android:backgroundTint="#B2F26A" android:textColor="#142017"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="18dp" android:layout_marginBottom="22dp"
+            android:text="Vejrdata: Open-Meteo. Opdatering ca. hver halve time afhængigt af Android. Mod- og sidevind er matematiske komponenter ud fra valgt kastretning. Discgolf-scorer er vejledende, ikke en officiel sikkerhedsvurdering. Gå ikke på banen under torden."
+            android:textColor="#8CA899" android:textSize="12sp" android:lineSpacingExtra="4dp"/>
     </LinearLayout>
 </ScrollView>
