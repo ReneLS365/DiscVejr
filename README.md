@@ -1,34 +1,49 @@
 # DiscVejr
 
-Selvstaendig Android-app og startskærmswidget til discgolfvejr i **Kvaglund / Esbjerg**. Helt adskilt fra Akkordklar.
+Selvstændig Android-app med **ægte startskærmswidget** til discgolf-vejr i Kvaglund, Esbjerg. Projektet er adskilt fra Akkordklar.
 
-## Installer på Samsung/Android
+## Download og installation
 
-1. Aabn [DiscVejr Android-bygninger](https://github.com/ReneLS365/DiscVejr/actions/workflows/android-apk.yml).
-2. Vaelg den nyeste koersel med groent flueben.
-3. Hent **DiscVejr-Android-APK** under *Artifacts* (GitHub-login kan vaere paakraevet).
-4. Udpak ZIP-filen og aabn **app-debug.apk** med telefonens Filer-app. Tillad installation fra den konkrete kilde, hvis Android beder om det.
-5. Aabn DiscVejr en gang. Hold fingeren paa startskærmen, vaelg **Widgets** og tilfoej **DiscVejr**.
+**[Hent APK-bygninger på GitHub Actions](https://github.com/ReneLS365/DiscVejr/actions/workflows/android-apk.yml)**
 
-**OBS:** Android/Samsung kan blokere installation af ukendte APK'er. `INSTALL_FAILED_VERIFICATION_FAILURE` er typisk et verifikations-/sikkerhedsafslag fra telefonen, ikke et problem med GitHub-repositoryets navn. Kontroller sikkerhedsadvarslerne paa telefonen. Installer kun APK'er du selv har bygget eller stoler paa.
+1. Åbn seneste gennemførte bygning med grønt flueben.
+2. Download `DiscVejr-Android-APK` under **Artifacts** (GitHub-login kan kræves).
+3. Pak ZIP-arkivet ud på mobilen og åbn `app-debug.apk`.
+4. Hvis Android beder om det, tillad installation fra den app, du åbnede APK'en i.
+5. Åbn DiscVejr, vælg **Opdater vejret nu**, og placer widgetten: hold på startskærmen → **Widgets** → **DiscVejr** (4 × 3).
 
-## Hvad widgetten viser
+Ved fejl som `INSTALL_FAILED_VERIFICATION_FAILURE` er det Androids pakkeverifikation, der afviser installationen. Se telefonens sikkerhedsadvarsler og kontrollér eventuel Samsung Auto Blocker. En gyldig APK er ikke en garanti for, at Android tillader installation.
 
-- Vindstyrke, retning og vindstoed
-- Temperatur og foeles-som
-- Regnrisiko de naeste 3 timer
-- Solnedgang, glow-forhold og discgolfscore (0-100)
-- Råd om forholdene paa banen
+## Funktioner
 
-Vejrdata hentes fra **Open-Meteo** uden API-noegle. Kvaglund er standardsted; valgfri GPS. Widgetten opdaterer cirka hver halve time, hvis Android tillader det.
+- Vindstyrke, vindretning og vindstød
+- Temperatur og føles-som-temperatur
+- Regnrisiko de næste 3 timer og solnedgang
+- Discgolf-score fra 0 til 100 med råd om vejrforholdene
+- Glow-/mørkeforhold og tordenadvarsler
+- Opdateringsknap og opdatering cirka hvert 30. minut, når Android tillader det
+- Kvaglund som standard, valgfrit telefonens omtrentlige position
 
-## Kildekode og build
+Vejrdata leveres af [Open-Meteo](https://open-meteo.com/). Ingen API-nøgle, reklamer eller brugertracking.
 
-Selvstaendig Android/Gradle-kode ligger i `discvejr_android/`. Ved foerste build udpakker workflowet kilden fra en checksum-kontrolleret kopi i `.source/` og forsoeger automatisk at committe de udpakkede filer, saa de kan redigeres direkte i GitHub/Codex.
+## Kildekode
 
-- Workflow: `.github/workflows/android-apk.yml`
-- Krav: JDK 17, Gradle 8.9 og Android SDK 35
-- Build: `cd discvejr_android && gradle assembleDebug`
-- Unit test: `javac -d /tmp/discvejr-tests discvejr_android/app/src/main/java/dk/discvejr/widget/WeatherLogic.java discvejr_android/tests/WeatherLogicTest.java && java -cp /tmp/discvejr-tests dk.discvejr.widget.WeatherLogicTest`
+Alt ligger i `discvejr_android/`, klar til udvikling via GitHub, Codex eller Android Studio.
 
-**Signering:** Dette er en debug-bygning. Til udgivelser med stabile opdateringer skal appen fremover signeres med en permanent, privat release-noegle, som ikke maa committes til et offentligt repository.
+- Android Java / native widget: `discvejr_android/app/src/main/`
+- Beregninger: `WeatherLogic.java`
+- Tests: `discvejr_android/tests/WeatherLogicTest.java`
+- CI og APK-build: `.github/workflows/android-apk.yml`
+
+Krav: **Java 17, Gradle 8.9, Android SDK 35**.
+
+Lokalt build fra repositoryets rod:
+
+```bash
+cd discvejr_android
+gradle assembleDebug
+```
+
+Dette er en debug-signeret testudgave. Fremtidige stabile udgivelser og opdateringer bør signeres med en vedvarende, privat release-nøgle, som aldrig lægges i et offentligt repository.
+
+Læs [Android-projektets dokumentation](discvejr_android/README.md) for flere detaljer.
